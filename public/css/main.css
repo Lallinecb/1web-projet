@@ -1,0 +1,31 @@
+@font-face{
+    /* chargement de la première police d'écriture  */ 
+    font-family: sharp;
+    src: url(../font/sharp_cardinal/Sharp\ Cardinal.ttf);
+}
+@font-face{
+    /* chargement de la deuxième police d'écriture  */ 
+    font-family: gloria;
+    src: url(../font/gloria_hallelujah/gloriahallelujah.ttf);
+}
+
+/* mise en place du cursor patate dans tout le html */
+html{
+    cursor: url(../cursor/foo438.cur),auto;
+}
+
+/* class pour aligner tous les textes voulu en au centre*/
+.txt-center{
+    text-align: center;
+}
+/* changement de la font du h1 et de sa size*/
+.h1-font{
+    font-family: sharp;
+    font-size: 120px;
+}
+/* changement de la font pour touts les p qui sont dans une div et changement de leur taille*/
+div p{
+    font-family: gloria;
+    font-size: 20px;
+}
+
