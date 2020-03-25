@@ -24,7 +24,7 @@
         </div>
         <br>
         <div class="row">   <!-- chargement des images de dos de carte avec responsive, 1 dos de carte sur desktop = 2 colonnes et sur mobile = 4 colonnes -->
-            <a href="" class="col-sm-4 offset-lg-3 col-lg-2 col-sm-4 red"><img src="public/img/dos-de-carte-1.jpg" alt="dos-de-carte-1"></a>
+            <a href="" class="img-select col-sm-4 offset-lg-3 col-lg-2 col-sm-4 red"><img src="public/img/dos-de-carte-1.jpg" alt="dos-de-carte-1"></a>
             <a href="public/views/change-back-card-2.html" class="col-sm-4  col-lg-2 col-sm-4"><img src="public/img/dos-de-carte-2.png" alt="dos-de-carte-2"></a>
             <a href="public/views/change-back-card-3.html" class="col-sm-4 col-lg-2 col-sm-4"><img src="public/img/dos-de-carte-3.png" alt="dos-de-carte-3"></a>
         </div>
@@ -34,16 +34,16 @@
         <br>
 
         <div class="txt-center">
-            <p>Choisissez le nnombre de ligne/colonne que vous voulez:</p>
+            <p>Choisissez le nombre de ligne/colonne que vous voulez:</p>
         </div>
         
         <br>
 
         <div class="row">
-
+            <!-- tous les boutons de choix de niveaux avec le responsive bootstrap -->
             <button type="button" onclick="location.href='public/views/lvl-1-back-card-1.html'" class="btn btn-outline-success col-sm-4 offset-lg-3 col-lg-2">2/3</button>
-            <button type="button" class="btn btn-outline-warning col-sm-4 col-lg-2">3/6</button>
-            <button type="button" class="btn btn-outline-danger col-sm-4 col-lg-2">3/12</button>
+            <button type="button" onclick="location.href='public/views/lvl-2-back-card-1.html'" class="btn btn-outline-warning col-sm-4 col-lg-2">3/6</button>
+            <button type="button" onclick="location.href='public/views/lvl-3-back-card-1.html'" class="btn btn-outline-danger col-sm-4 col-lg-2">3/12</button>
           
 
 
@@ -56,6 +56,7 @@
 
 
     </footer>
+    <!-- chargement des scripts js  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="public/js/main.js"></script>
 </body>
