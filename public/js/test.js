@@ -1,16 +1,18 @@
-const cards = document.querySelectorAll('.memory-card'); //List of all memory cards elemenst
+const cards = document.querySelectorAll('.memory-card'); //On met tous les cards dans une const
 
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+var score = 0;
+var countPlay = 0;
 
 function flipCard() {
     if(lockBoard) return;
     if(this=== firstCard) return;
-    this.classList.add('flip'); // add the word 'flip' to each card the user pressed
+    this.classList.add('flip'); // ajoute flip dans la classe de l'élément cliquer
     
     if(!hasFlippedCard) {
-        //First click
+        // premier clique
         hasFlippedCard = true;
         firstCard = this;
         
@@ -18,7 +20,7 @@ function flipCard() {
 
     }
     
-    //Second click
+    // Deuxieme clique
     hasFlippedCard = false;
     secondCard = this;
 
@@ -27,13 +29,18 @@ function flipCard() {
     
 
 function checkForMatch() {
-    let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
-    
-    isMatch ? disableCards() : unFlipCards();
+    let isMatch = firstCard.dataset.framework === secondCard.dataset.framework; // verifie si le data-framework des deux éléments cliquer est le même 
+    countPlay += 1;
+    console.log(countPlay);
+    isMatch ? disableCards() : unFlipCards(); // si c'est le même on active la fonction disbleCards() sinon on active unFlipCards
+    if (isMatch = true ) {
+        score=+1
+        console.log(score)
+    }
 }
 
 function disableCards() {
-    //It's a match
+    // quand les data-framework des deux éléments cliquer sont les mêmes on enleve l'eventlistener, pour empecher les interactions avec les cartes déjà trouvées
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
     
@@ -43,14 +50,14 @@ function disableCards() {
 function unFlipCards(){
     
     lockBoard = true;
-     //Not a match
+     // quand les data-framework ne sont pas les mêmes on enleve le flip des cartes cliquer pour qu'elles se retournent
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
         
         resetBoard();
                 
-    }, 1500);
+    }, 1500);// 1500 milisecondes
 }
 
 function resetBoard(){

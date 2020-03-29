@@ -1,3 +1,19 @@
+@font-face{
+    /* chargement de la première police d'écriture  */ 
+    font-family: sharp;
+    src: url(../font/sharp_cardinal/Sharp\ Cardinal.ttf);
+}
+@font-face{
+    /* chargement de la deuxième police d'écriture  */ 
+    font-family: gloria;
+    src: url(../font/gloria_hallelujah/gloriahallelujah.ttf);
+}
+
+/* mise en place du cursor patate dans tout le html */
+html{
+    cursor: url(../cursor/foo438.cur),auto;
+}
+
 *{
     padding:0;
     margin:0;
@@ -7,19 +23,19 @@
 body{
     height:100vh;
     display:flex;
-    background-color:#3D7EF0;
+    background-color:white;
 }
 
-.memory-game{
+.memory-game{ /* Le css qui sera appliquer au plateau de jeu*/
     width:640px;
     height:650px;
     margin:auto;
     display:flex;
     flex-wrap: wrap;
-    perspective: 1000px;
+
 }
 
-.memory-card{
+.memory-card{ /* css de chaque carte*/
     width:calc(25% - 10px);
     height:calc(33.333% - 10px);
     margin:5px;
@@ -30,12 +46,9 @@ body{
 
 }
 
-.memory-card:active{
-    transform: scale(.97);
-    transition: transform .2s;
-}
 
-.memory-card.flip{
+
+.memory-card.flip{ 
     transform: rotateY(180deg);
 }
 
@@ -47,7 +60,7 @@ body{
     padding:20px;
     position:absolute;
     border-radius: 5px; 
-    background-color:#1c7ccc;
+    background-color:white;
     backface-visibility: hidden;
 }
 

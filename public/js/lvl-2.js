@@ -1,48 +1,73 @@
-var cards = [
-    {
-        name: "php",
-        img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/php-logo_1.png",
-        id: 1,
-    },
-    {
-        name: "css3",
-        img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/css3-logo.png",
-        id: 2
-    },
-    {
-        name: "html5",
-        img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/html5-logo.png",
-        id: 3
-    },
-    {
-        name: "jquery",
-        img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/jquery-logo.png",
-        id: 4
-    }, 
-    {
-        name: "javascript",
-        img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/js-logo.png",
-        id: 5
-    },
-    {
-        name: "node",
-        img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/nodejs-logo.png",
-        id: 6
-    },
-    {
-        name: "photoshop",
-        img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/photoshop-logo.png",
-        id: 7
-    },
-    {
-        name: "python",
-        img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/python-logo.png",
-        id: 8
-    },
-    {
-        name: "rails",
-        img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/rails-logo.png",
-        id: 9
-    },
+const cards = document.querySelectorAll('.memory-card'); //On met tous les cards dans une const
 
-];
+let hasFlippedCard = false;
+let lockBoard = false;
+let firstCard, secondCard;
+var score = 0;
+var countPlay = 0;
+
+function flipCard() {
+    if(lockBoard) return;
+    if(this=== firstCard) return;
+    this.classList.add('flip'); // ajoute flip dans la classe de l'élément cliquer
+    
+    if(!hasFlippedCard) {
+        // premier clique
+        hasFlippedCard = true;
+        firstCard = this;
+        
+        return;
+
+    }
+    
+    // Deuxieme clique
+    hasFlippedCard = false;
+    secondCard = this;
+
+   checkForMatch();
+}
+    
+
+function checkForMatch() {
+    let isMatch = firstCard.dataset.framework === secondCard.dataset.framework; // verifie si le data-framework des deux éléments cliquer est le même 
+    countPlay += 1;
+    console.log(countPlay);
+    isMatch ? disableCards() : unFlipCards(); // si c'est le même on active la fonction disbleCards() sinon on active unFlipCards
+
+}
+
+function disableCards() {
+    // quand les data-framework des deux éléments cliquer sont les mêmes on enleve l'eventlistener, pour empecher les interactions avec les cartes déjà trouvées
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+    score += 15;
+    console.log(score);
+    resetBoard();
+}
+
+function unFlipCards(){
+    
+    lockBoard = true;
+     // quand les data-framework ne sont pas les mêmes on enleve le flip des cartes cliquer pour qu'elles se retournent
+    setTimeout(() => {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+        
+        resetBoard();
+                
+    }, 1500);// 1500 milisecondes
+}
+
+function resetBoard(){
+    [hasFlippedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
+}
+
+(function shuffle() {
+    cards.forEach(card => {
+        let randomPos =  Math.floor(Math.random() * 8);
+        card.style.order = randomPos;
+    });
+})();
+
+cards.forEach(card => card.addEventListener('click', flipCard));
