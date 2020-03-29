@@ -33,10 +33,7 @@ function checkForMatch() {
     countPlay += 1;
     console.log(countPlay);
     isMatch ? disableCards() : unFlipCards(); // si c'est le même on active la fonction disbleCards() sinon on active unFlipCards
-    if (isMatch = true ) {
-        score=+1
-        console.log(score)
-    }
+   
 }
 
 function disableCards() {

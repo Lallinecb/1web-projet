@@ -5,6 +5,8 @@ let lockBoard = false;
 let firstCard, secondCard;
 var score = 0;
 var countPlay = 0;
+const showScore = document.querySelector(".score");
+const moves = document.querySelector(".moves");
 
 function flipCard() {
     if(lockBoard) return;
@@ -33,6 +35,7 @@ function checkForMatch() {
     countPlay += 1;
     console.log(countPlay);
     isMatch ? disableCards() : unFlipCards(); // si c'est le même on active la fonction disbleCards() sinon on active unFlipCards
+    moves.innerHTML = countPlay;
     
 }
 
@@ -42,6 +45,7 @@ function disableCards() {
     secondCard.removeEventListener('click', flipCard);
     score += 15;
     console.log(score);
+    showScore.innerHTML = score;
     
     resetBoard();
 }
@@ -70,5 +74,8 @@ function resetBoard(){
         card.style.order = randomPos;
     });
 })();
+
+
+
 
 cards.forEach(card => card.addEventListener('click', flipCard));
