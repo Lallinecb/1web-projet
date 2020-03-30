@@ -15,6 +15,7 @@ html{
 }
 
 *{
+    font-family: gloria;
     padding:0;
     margin:0;
     box-sizing: border-box;
@@ -66,4 +67,9 @@ body{
 
 .front-face{
     transform: rotateY(180deg);
+}
+
+.win{
+    display: none;
+    margin: auto;
 }

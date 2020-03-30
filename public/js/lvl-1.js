@@ -7,6 +7,9 @@ var score = 0;
 var countPlay = 0;
 const showScore = document.querySelector(".score");
 const moves = document.querySelector(".moves");
+const showScoreWin = document.querySelector(".scorewin");
+const movesWin = document.querySelector(".moveswin");
+
 
 function flipCard() {
     if(lockBoard) return;
@@ -32,6 +35,7 @@ function flipCard() {
 
 function checkForMatch() {
     let isMatch = firstCard.dataset.framework === secondCard.dataset.framework; // verifie si le data-framework des deux éléments cliquer est le même 
+
     countPlay += 1;
     console.log(countPlay);
     isMatch ? disableCards() : unFlipCards(); // si c'est le même on active la fonction disbleCards() sinon on active unFlipCards
@@ -46,6 +50,13 @@ function disableCards() {
     score += 15;
     console.log(score);
     showScore.innerHTML = score;
+    if(score === 45){
+        document.querySelector(".win").style.display = 'block';
+        document.querySelector(".memory-game").style.display = 'none';
+        document.querySelector(".displaynone").style.display = 'none';
+        movesWin.innerHTML = countPlay;
+        showScoreWin.innerHtml = score;
+    } 
     
     resetBoard();
 }

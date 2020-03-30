@@ -11,9 +11,12 @@
     <title>Memory game</title>
 </head>
 <body>
-    <div >score : <span class="score">0</span>&nbsp</div>
-    <br>
-    <div >coup : <span class="moves">0</span></div>
+    <div class="displaynone">
+        <div>score : <span class="score">0</span>&nbsp</div>
+      
+        <div >coup : <span class="moves">0</span></div>
+    </div>
+    
     <section class="memory-game">
         <div class="memory-card" data-framework="fille">
             <img class="front-face" src="../img/fille-moche.jpg" alt="fille">
@@ -64,6 +67,13 @@
             <img class="back-face" src="../img/dos-de-carte-1.jpg" alt="d3">
         </div>
     </section>
+    <section class="win">
+        <h2>Vous avez gagner</h2>
+        <div>score : <span class="scorewin">0</span>&nbsp</div>
+        <div >coup : <span class="moveswin">0</span></div>
+        <button type="button" onclick="location.href='../../index.html'" class="btn btn-outline-success offset-lg-5 col-lg-4">Rejouer</button>
+    </section>
+
         <script src="../js/lvl-3.js"></script>
 </body>
 </html>
