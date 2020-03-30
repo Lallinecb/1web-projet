@@ -50,12 +50,13 @@ function disableCards() {
     score += 15;
     console.log(score);
     showScore.innerHTML = score;
+    
     if(score === 45){
         document.querySelector(".win").style.display = 'block';
         document.querySelector(".memory-game").style.display = 'none';
         document.querySelector(".displaynone").style.display = 'none';
         movesWin.innerHTML = countPlay;
-        showScoreWin.innerHtml = score;
+        showScoreWin.innerHTML = score;
     } 
     
     resetBoard();

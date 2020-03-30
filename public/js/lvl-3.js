@@ -55,7 +55,7 @@ function disableCards() {
         document.querySelector(".memory-game").style.display = 'none';
         document.querySelector(".displaynone").style.display = 'none';
         movesWin.innerHTML = countPlay;
-        showScoreWin.innerHtml = score;
+        showScoreWin.innerHTML = score;
     } 
     
     resetBoard();
