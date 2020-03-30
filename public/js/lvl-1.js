@@ -1,8 +1,8 @@
 const cards = document.querySelectorAll('.memory-card'); // On met tous les cards dans une const
 
-let hasFlippedCard = false;
+let flipCards = false;
 let lockBoard = false;
-let firstCard, secondCard;
+let firstClick, secondClick;
 var score = 0;
 var countPlay = 0;
 const showScore = document.querySelector(".score");
@@ -13,28 +13,28 @@ const movesWin = document.querySelector(".moveswin");
 
 function flipCard() {
     if(lockBoard) return;
-    if(this=== firstCard) return;
+    if(this=== firstClick) return;
     this.classList.add('flip'); // ajoute flip dans la classe de l'élément cliquer
     
-    if(!hasFlippedCard) {
+    if(!flipCards) {
         // premier clique
-        hasFlippedCard = true;
-        firstCard = this;
+        flipCards = true;
+        firstClick = this;
         
         return;
 
     }
     
     // Deuxieme clique
-    hasFlippedCard = false;
-    secondCard = this;
+    flipCards = false;
+    secondClick = this;
 
    checkForMatch();
 }
     
 
 function checkForMatch() {
-    let isMatch = firstCard.dataset.framework === secondCard.dataset.framework; // verifie si le data-framework des deux éléments cliquer est le même 
+    let isMatch = firstClick.dataset.framework === secondClick.dataset.framework; // verifie si le data-framework des deux éléments cliquer est le même 
 
     countPlay += 1;
     console.log(countPlay);
@@ -45,8 +45,8 @@ function checkForMatch() {
 
 function disableCards() {
     // quand les data-framework des deux éléments cliquer sont les mêmes on enleve l'eventlistener, pour empecher les interactions avec les cartes déjà trouvées
-    firstCard.removeEventListener('click', flipCard);
-    secondCard.removeEventListener('click', flipCard);
+    firstClick.removeEventListener('click', flipCard);
+    secondClick.removeEventListener('click', flipCard);
     score += 15;
     console.log(score);
     showScore.innerHTML = score;
@@ -67,8 +67,8 @@ function unFlipCards(){
     lockBoard = true;
      // quand les data-framework ne sont pas les mêmes on enleve le flip des cartes cliquer pour qu'elles se retournent
     setTimeout(() => {
-        firstCard.classList.remove('flip');
-        secondCard.classList.remove('flip');
+        firstClick.classList.remove('flip');
+        secondClick.classList.remove('flip');
         
         resetBoard();
                 
@@ -76,8 +76,8 @@ function unFlipCards(){
 }
 
 function resetBoard(){
-    [hasFlippedCard, lockBoard] = [false, false];
-    [firstCard, secondCard] = [null, null];
+    [flipCards, lockBoard] = [false, false];
+    [firstClick, secondClick] = [null, null];
 }
 
 (function shuffle() {
