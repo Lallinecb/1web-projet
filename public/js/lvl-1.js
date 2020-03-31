@@ -16,13 +16,13 @@ const movesWin = document.querySelector(".moveswin");
 
 function flipCard() {
     if(lockBoard) return;
-    if(this=== firstClick) return;
+    if(this=== firstClick) return; // si on clique 2 fois sur la meme carte ne fais rien
     this.classList.add('flip'); // ajoute flip dans la classe de l'élément cliquer
     
     if(!flipCards) {
         // premier clique
         flipCards = true;
-        firstClick = this;
+        firstClick = this; 
         
         return;
 
@@ -96,6 +96,8 @@ function resetBoard(){ // remet les variables qui stock ce sur quoi on clique a 
 // detecte les cliques sur les cartes
 cards.forEach(card => card.addEventListener('click', flipCard));
 
+
+//BONUS
 
 //empeche le click droit
 document.oncontextmenu = new Function("return false");
