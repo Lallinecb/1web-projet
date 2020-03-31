@@ -95,3 +95,21 @@ function resetBoard(){ // remet les variables qui stock ce sur quoi on clique a 
 
 // detecte les cliques sur les cartes
 cards.forEach(card => card.addEventListener('click', flipCard));
+
+
+//empeche le click droit
+document.oncontextmenu = new Function("return false");
+
+
+//empeche le f12
+
+document.onkeydown = function ()
+{
+if(event.keyCode==123) //F12
+{
+event.keyCode = 0;
+event.returnValue = false;
+event.cancelBubble = true;
+return false;
+}
+} 

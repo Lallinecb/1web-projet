@@ -90,3 +90,15 @@ function resetBoard(){
 
 
 cards.forEach(card => card.addEventListener('click', flipCard));
+
+document.oncontextmenu = new Function("return false");
+document.onkeydown = function ()
+{
+if(event.keyCode==123) //F12
+{
+event.keyCode = 0;
+event.returnValue = false;
+event.cancelBubble = true;
+return false;
+}
+} 
